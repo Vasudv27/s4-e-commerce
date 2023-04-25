@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "simple login application user can save data to database and admin can see user data",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,10 +17,10 @@
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "mongodb": "^4.5.0",
+    "mysql2": "^3.2.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
   }
 }
-
