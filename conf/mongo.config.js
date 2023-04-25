@@ -1,11 +1,21 @@
+
 const mysql=require("mysql2")
 
 const pool = mysql.createPool({
-    host:process.env.host,
-    user:process.env.user,
-    database:process.env.database,
-    password:process.env.password,
+    host:'localhost',
+    user:'root',
+    database:'e-commerce',
+    password:'root',
 
 });
+
+let sql="SELECT * FROM names;"
+
+pool.execute(sql,function(err,result){
+    if(err)throw err;
+
+    console.log(result);
+
+})
 
 module.exports = pool.promise();
