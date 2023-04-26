@@ -13,8 +13,8 @@ const routeRegister = require('./routers/register');
 
 
 
-//server start here
-connectToServer(err => { if (err) console.log(err); else console.log("server start") });
+// //server start here
+// connectToServer(err => { if (err) console.log(err); else console.log("server start") });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

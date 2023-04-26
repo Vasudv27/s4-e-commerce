@@ -14,7 +14,7 @@ let sql="SELECT * FROM names;"
 pool.execute(sql,function(err,result){
     if(err)throw err;
 
-    console.log(result);
+    
 
 })
 
