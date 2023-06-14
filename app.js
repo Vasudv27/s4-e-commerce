@@ -10,7 +10,7 @@ const routeIndex = require('./routers/index');
 const routeLogin = require('./routers/login');
 const routeLogout = require('./routers/logout');
 const routeRegister = require('./routers/register');
-
+const bcrypt = require('bcrypt');
 
 
 // //server start here
@@ -45,5 +45,28 @@ app.use('/login', routeLogin);
 app.use('/logout', routeLogout)
 app.use('/register', routeRegister);
 
+app.post('./routers/login.js',async(req,res)=>{
+    try{
+        const {email,password}=req.body;
+        const user =await db("users").first('*').where ({email:email});
+        if(user){
+            const validPass = await bcrypt.compare(password,user.hash);
+            if(validPass){
+                res.status(200).json("Valid email password");
+            }else{
+                res.json("Wrong pass!");
+
+            }
+
+        }else{
+            res.status(404).json("User not found");
+
+        }
+    }
+    catch(e){
+        console.log(e);
+        res.status(500).send("Something broke!");
+    }
+})
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
